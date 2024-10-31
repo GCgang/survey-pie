@@ -11,11 +11,11 @@ export default function QuestionBox({
 }) {
   const { title, description, type, required, options } = question;
   return (
-    <div>
+    <section>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Body type={type} answer={answer} setAnswers={setAnswers} />
+      <Body type={type} answer={answer} setAnswers={setAnswers} options={options} />
       <ActionButtons questionsLength={questionsLength} step={step} />
-    </div>
+    </section>
   );
 }
