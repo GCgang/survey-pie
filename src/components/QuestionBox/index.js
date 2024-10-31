@@ -1,27 +1,25 @@
-import Description from '../Description';
 import Title from '../Title';
+import Description from '../Description';
 import Body from '../Body';
 import ActionButtons from '../ActionButtons';
 import styled from 'styled-components';
-export default function QuestionBox({
-  question,
-  questionsLength,
-  step,
-  answer,
-  setAnswers,
-}) {
-  const { title, description, type, required, options } = question;
+import useCurrentQuestion from '../../hooks/useCurrentQuestion';
+import useCurrentAnswer from '../../hooks/useCurrentAnswer';
+export default function QuestionBox() {
+  const question = useCurrentQuestion();
+  const [answer, setAnswer] = useCurrentAnswer();
+
   return (
     <QuestionBoxWrapper>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
+      <Title>{question.title}</Title>
+      <Description>{question.description}</Description>
       <Body
-        type={type}
+        type={question.type}
         answer={answer}
-        setAnswers={setAnswers}
-        options={options}
+        setAnswer={setAnswer}
+        options={question.options}
       />
-      <ActionButtons questionsLength={questionsLength} step={step} />
+      <ActionButtons />
     </QuestionBoxWrapper>
   );
 }
