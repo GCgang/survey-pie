@@ -11,8 +11,8 @@ export default function TextInput({ answer, setAnswers, options }) {
 }
 
 const Input = styled.input`
+  width: 100%;
   border: 1px solid rgba(224, 224, 224, 1);
-
   border-radius: 5px;
   box-sizing: border-box;
   padding: 12px 18px;
