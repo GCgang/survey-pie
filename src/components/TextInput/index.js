@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-export default function TextInput({ answer, setAnswers, options }) {
+export default function TextInput({ answer, setAnswer, options }) {
   return (
     <Input
       type="text"
       value={answer}
-      onChange={(e) => setAnswers(e.target.value)}
+      onChange={(e) => setAnswer(e.target.value)}
       placeholder={options.placeholder}
     />
   );

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function TextAreaInput({ answer, setAnswers, options }) {
+export default function TextAreaInput({ answer, setAnswer, options }) {
   return <TextArea placeholder={options.placeholder}></TextArea>;
 }
 

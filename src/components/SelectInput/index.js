@@ -10,12 +10,12 @@ function Item({ children, onChange }) {
     </ItemWrapper>
   );
 }
-export default function SelectInput({ answer = [], setAnswers, options }) {
+export default function SelectInput({ answer = [], setAnswer, options }) {
   const handleChange = (isCheckd, index) => {
     if (isCheckd) {
-      setAnswers([...answer, index]);
+      setAnswer([...answer, index]);
     } else {
-      setAnswers(answer.filter((item) => item !== index));
+      setAnswer(answer.filter((item) => item !== index));
     }
   };
   return (
