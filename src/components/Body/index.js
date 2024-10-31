@@ -3,7 +3,7 @@ import SelectInput from '../SelectInput';
 import TextAreaInput from '../TextAreaInput';
 import styled from 'styled-components';
 
-export default function Body({ type, answer, setAnswers, options }) {
+export default function Body({ type, answer, setAnswer, options }) {
   let InputComponent = null;
   if (type === 'select') {
     InputComponent = SelectInput;
@@ -14,11 +14,7 @@ export default function Body({ type, answer, setAnswers, options }) {
   }
   return (
     <BodyWrapper>
-      <InputComponent
-        answer={answer}
-        setAnswers={setAnswers}
-        options={options}
-      />
+      <InputComponent answer={answer} setAnswer={setAnswer} options={options} />
     </BodyWrapper>
   );
 }
