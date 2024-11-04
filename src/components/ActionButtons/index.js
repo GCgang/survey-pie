@@ -18,7 +18,7 @@ export default function ActionButtons() {
         </Button>
       )}
       {isLast ? (
-        <Button type="PRIMARY" onClick={() => navigate('done')}>
+        <Button type="PRIMARY" onClick={() => navigate('/done')}>
           제출
         </Button>
       ) : (

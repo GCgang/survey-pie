@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil';
-import questionsState from '../recoil/atom/questionsState';
+import surveyState from '../recoil/atom/surveyState';
 import useStep from './useStep';
 
 export default function useCurrentQuestion() {
-  const questions = useRecoilValue(questionsState);
+  const questions = useRecoilValue(surveyState).questions;
   const step = useStep();
 
   return questions[step];
