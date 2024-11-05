@@ -4,12 +4,17 @@ import styled from 'styled-components';
 import questionsLengthSelector from '../../recoil/selector/questionsLengthSelector';
 import { useRecoilValue } from 'recoil';
 import useStep from '../../hooks/useStep';
+import useAnswers from '../../hooks/useAnswers';
+import postAnswers from '../../services/postAnswers';
+import useSurveyId from '../../hooks/useSurveyId';
 
 export default function ActionButtons() {
   const questionsLength = useRecoilValue(questionsLengthSelector);
   const step = useStep();
-  const isLast = questionsLength - 1 === step;
+  const surveyId = useSurveyId();
+  const answers = useAnswers();
   const navigate = useNavigate();
+  const isLast = questionsLength - 1 === step;
   return (
     <ActionButtonsWrapper>
       {step === 0 || (
@@ -18,7 +23,13 @@ export default function ActionButtons() {
         </Button>
       )}
       {isLast ? (
-        <Button type="PRIMARY" onClick={() => navigate('/done')}>
+        <Button
+          type="PRIMARY"
+          onClick={() => {
+            postAnswers(surveyId, answers);
+            navigate('/done');
+          }}
+        >
           제출
         </Button>
       ) : (
