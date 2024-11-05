@@ -1,5 +1,5 @@
 import { selector } from 'recoil';
-import surveyState from '../atom/surveyState';
+import surveyState from './surveyStateSelector';
 
 const questionsLengthSelector = selector({
   key: 'questionsLengthSelector',
