@@ -5,6 +5,5 @@ export default function useCurrentQuestion() {
   const step = useStep();
   const surveyData = useRecoilValue(surveyState);
   const questions = surveyData?.questions || [];
-
   return questions[step];
 }

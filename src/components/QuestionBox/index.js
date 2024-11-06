@@ -8,7 +8,7 @@ import useCurrentAnswer from '../../hooks/useCurrentAnswer';
 export default function QuestionBox() {
   const question = useCurrentQuestion();
   const [answer, setAnswer] = useCurrentAnswer();
-
+  console.log(question);
   return (
     <QuestionBoxWrapper>
       <Title>{question.title}</Title>

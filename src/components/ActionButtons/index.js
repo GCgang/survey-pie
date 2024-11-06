@@ -8,6 +8,7 @@ import useAnswers from '../../hooks/useAnswers';
 import postAnswers from '../../services/postAnswers';
 import useSurveyId from '../../hooks/useSurveyId';
 import { useState } from 'react';
+import useRequiredOptions from '../../hooks/useRequiredOptions';
 
 export default function ActionButtons() {
   const questionsLength = useRecoilValue(questionsLengthSelector);
@@ -17,6 +18,9 @@ export default function ActionButtons() {
   const navigate = useNavigate();
   const [isPosting, setIsPosting] = useState(false);
   const isLast = questionsLength - 1 === step;
+  const isRequired = useRequiredOptions();
+  const isBlockToNext = isRequired ? !answers[step]?.length : false;
+
   return (
     <ActionButtonsWrapper>
       {step === 0 || (
@@ -40,12 +44,16 @@ export default function ActionButtons() {
                 setIsPosting(false);
               });
           }}
-          disabled={isPosting}
+          disabled={isPosting || isBlockToNext}
         >
           {isPosting ? '제출중...' : '제출'}
         </Button>
       ) : (
-        <Button type="PRIMARY" onClick={() => navigate(`${step + 1}`)}>
+        <Button
+          type="PRIMARY"
+          onClick={() => navigate(`${step + 1}`)}
+          disabled={isBlockToNext}
+        >
           다음
         </Button>
       )}
